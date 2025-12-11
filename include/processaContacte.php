@@ -1,5 +1,4 @@
 <?php
-// processaContacte.php
 function safe($k) {
     if (!isset($_POST[$k])) return "";
     return trim(htmlspecialchars($_POST[$k], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'));

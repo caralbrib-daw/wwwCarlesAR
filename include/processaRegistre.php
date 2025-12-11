@@ -1,12 +1,9 @@
 <?php
-// processaRegistre.php
-// Recibe POST del formulario de registro
 function safe($key) {
     if (!isset($_POST[$key])) return "";
     return trim(htmlspecialchars($_POST[$key], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'));
 }
 
-// Campos
 $nom = safe('nom');
 $cognoms = safe('cognoms');
 $email = safe('email');
@@ -17,7 +14,6 @@ $web = safe('web');
 
 $errors = [];
 
-// Comprobar campos obligatorios (nom i email)
 if ($nom === "") { $errors[] = "El camp 'Nom' és obligatori."; }
 if ($email === "") { $errors[] = "El camp 'Email' és obligatori."; }
 ?>
