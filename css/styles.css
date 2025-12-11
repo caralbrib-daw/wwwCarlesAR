@@ -1,25 +1,118 @@
-/* estils.css - estilos generales */
-* { box-sizing: border-box; }
-body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0; line-height: 1.4; background: #f6f6f6; color: #222; }
-header { background: #0a7; padding: 1rem; color: white; }
-header h1 { margin: 0 0 0.2rem; font-size: 1.4rem; }
-nav { background: #333; }
-nav .menu { list-style: none; margin: 0; padding: 0.5rem; display:flex; gap:0.5rem; }
-nav .menu li { }
-nav .menu a { color: white; padding: 0.5rem 0.8rem; display:inline-block; text-decoration:none; border-radius:4px; }
-nav .menu a:hover { background: rgba(255,255,255,0.1); }
+* { 
+    box-sizing: border-box; 
+}
 
-main { padding: 1rem; max-width: 900px; margin: 1rem auto; background: white; border-radius:6px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+body { 
+    font-family: Arial, Helvetica, sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    line-height: 1.4; 
+    background: #000000; 
+    color: #ffffff; 
+}
 
-footer { text-align:center; padding: 1rem; background: #eee; margin-top:1rem; }
+header { 
+    background: rgb(0, 0, 0); 
+    padding: 1rem; 
+    color: #0a7; 
+}
 
-.form-list { list-style:none; padding:0; margin:0; display:block; gap:12px; }
-.form-list li { margin-bottom: 0.8rem; }
-.form-list input[type="text"], .form-list input[type="email"], .form-list input[type="password"], .form-list select, .form-list textarea { width: 100%; padding: 0.4rem; border: 1px solid #ccc; border-radius:4px; }
+header h1 { 
+    margin: 0 0 0.2rem; 
+    font-size: 1.4rem; 
+}
 
-.buttons { display:flex; gap:10px; }
-.hero { max-width: 100%; height: auto; display:block; margin-top: 1rem; }
+nav { 
+    background: #1b1b1b; 
+}
 
-.errors { background:#ffe6e6; border:1px solid #ffb3b3; padding:12px; border-radius:6px; }
-.data { background:#f0f8ff; padding:12px; border-radius:6px; }
-.msg { white-space: pre-wrap; border:1px dashed #ccc; padding:10px; border-radius:4px; background:#fff; }
+nav .menu { 
+    list-style: none; 
+    margin: 0; 
+    padding: 0.5rem; 
+    display:flex; 
+    gap:0.5rem; 
+}
+
+nav .menu li { 
+
+}
+
+nav .menu a { 
+    color: white; 
+    padding: 0.5rem 0.8rem; 
+    display:inline-block; 
+    text-decoration:none; 
+    border-radius:4px; 
+}
+
+nav .menu a:hover { 
+    background: rgba(0, 0, 0, 0.1); 
+}
+
+main { 
+    padding: 1rem;
+    max-width: 900px;
+    margin: 1rem auto;
+    background: white;
+    border-radius:6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05); 
+}
+
+footer { 
+    text-align:center; 
+    padding: 1rem; 
+    background: #ffffff; 
+    margin-top:1rem; 
+}
+
+.form-list { 
+    list-style:none; 
+    padding:0; 
+    margin:0; 
+    display:block; 
+    gap:12px; 
+}
+
+.form-list li { 
+    margin-bottom: 0.8rem; 
+}
+
+.form-list input[type="text"], .form-list input[type="email"], .form-list input[type="password"], .form-list select, .form-list textarea { 
+    width: 100%; 
+    padding: 0.4rem; 
+    border: 1px solid #c7c7c7; 
+    border-radius:4px; 
+}
+
+.buttons { 
+    display:flex; 
+    gap:10px; 
+}
+
+.hero { 
+    max-width: 100%; 
+    height: auto; 
+    display:block; 
+    margin-top: 1rem; 
+}
+
+.errors { 
+    background:#ff6969; 
+    border:1px solid #ff0000; 
+    padding:12px; 
+    border-radius:6px; 
+}
+.data { 
+    background:#ffffff; 
+    padding:12px; 
+    border-radius:6px; 
+}
+
+.msg { 
+    white-space: pre-wrap; 
+    border:1px dashed #c7c7c7; 
+    padding:10px; 
+    border-radius:4px; 
+    background:#fff; 
+}
