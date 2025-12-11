@@ -18,8 +18,8 @@ if ($missatge === "") $errors[] = "El camp 'Missatge' és obligatori.";
 <head>
   <meta charset="utf-8" />
   <title>Contacte - Resultat</title>
-  <link rel="stylesheet" href="../css/estils.css" />
-  <link rel="stylesheet" href="../css/process.css" />
+  <link rel="stylesheet" href="/wwwCarlesAR/css/styles.css" />
+  <link rel="stylesheet" href="/wwwCarlesAR/css/process.css" />
 </head>
 <body>
   <?php include __DIR__ . '/partials/cap.partial.php'; ?>

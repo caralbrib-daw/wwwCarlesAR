@@ -8,7 +8,7 @@ body {
     padding: 0; 
     line-height: 1.4; 
     background: #000000; 
-    color: #ffffff; 
+    color: #000000;
 }
 
 header { 
@@ -39,7 +39,7 @@ nav .menu li {
 }
 
 nav .menu a { 
-    color: white; 
+    color: rgb(255, 255, 255); 
     padding: 0.5rem 0.8rem; 
     display:inline-block; 
     text-decoration:none; 
@@ -62,8 +62,9 @@ main {
 footer { 
     text-align:center; 
     padding: 1rem; 
-    background: #ffffff; 
+    background: #000000; 
     margin-top:1rem; 
+    color: #ffffff;
 }
 
 .form-list { 

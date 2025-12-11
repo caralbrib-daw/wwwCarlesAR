@@ -1,6 +1,6 @@
 <section>
   <h2>Registre d'usuari</h2>
-  <form method="post" action="../include/processaRegistre.php" novalidate>
+  <form method="post" action="/wwwCarlesAR/include/processaRegistre.php" novalidate>
     <ul class="form-list">
       <li><label>Nom: <input type="text" name="nom" required></label></li>
       <li><label>Cognoms: <input type="text" name="cognoms"></label></li>
