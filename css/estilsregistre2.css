@@ -1,0 +1,9 @@
+body {
+  background: #f2e6d9;
+  color: #5a3825;
+}
+
+.result, .data {
+  border: 2px solid #5a3825;
+  background: #e6d5c3;
+}

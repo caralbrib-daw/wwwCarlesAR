@@ -51,6 +51,16 @@ if (!has_text_value('email')) $errors[] = "El camp 'Email' és obligatori o buit
   <title>Registre - Resultat</title>
   <link rel="stylesheet" href="wwwCarlesAR/css/styles.css" />
   <link rel="stylesheet" href="wwwCarlesAR/css/process.css" />
+
+  <?php
+  $estil = $_POST['estil'] ?? "";
+
+  if ($estil === "1") {
+      echo '<link rel="stylesheet" href="wwwCarlesAR/css/estilsregistre1.css">';
+  } else if ($estil === "2") {
+      echo '<link rel="stylesheet" href="wwwCarlesAR/css/estilsregistre2.css">';
+  }
+  ?>
 </head>
 <body>
   <?php include __DIR__ . '/partials/cap.partial.php'; ?>
@@ -140,7 +150,7 @@ if (!has_text_value('email')) $errors[] = "El camp 'Email' és obligatori o buit
         
         } else {
           echo "<p><strong>Animal apadrinat:</strong> <span class='valor-buit'>Sense valor</span></p>";
-          echo "<img src='../images/desconegut.png' class='animal-img' alt='Sense valor'>";
+          echo "<img src='wwwCarlesAR/images/desconegut.png' class='animal-img' alt='Sense valor'>";
         }
       ?>
       </div>

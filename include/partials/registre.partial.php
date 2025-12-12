@@ -37,6 +37,12 @@
         </select>
       </label>
       </li>
+      <li>
+        <label>Estil dels resultats:</label><br>
+        <label><input type="radio" name="estil" value="1"> Estil roig</label><br>
+        <label><input type="radio" name="estil" value="2"> Estil marró</label><br>
+        <label><input type="radio" name="estil" value=""> Estil per defecte</label>
+      </li>
     </ul>
   </form>
 </section>
