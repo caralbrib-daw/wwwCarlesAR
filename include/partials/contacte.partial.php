@@ -11,6 +11,16 @@
         <input type="submit" name="envia" value="Enviar">
         <input type="reset" value="Netejar">
       </li>
+      <li>
+        <label>Puntuació (1 a 5):
+          <input type="number" name="punts" min="1" max="5" required>
+        </label>
+      </li>
+      <li>
+        <label>Multiplicador:
+          <input type="range" name="mult" min="1" max="100" value="1">
+        </label>
+      </li>
     </ul>
   </form>
 </section>

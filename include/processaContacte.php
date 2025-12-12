@@ -50,6 +50,33 @@ if (!has_text_value('missatge')) $errors[] = "El camp 'Missatge' és obligatori 
   <?php include __DIR__ . '/partials/menu.partial.php'; ?>
 
   <main>
+<?php
+$punts = intval($_POST['punts'] ?? 0);
+$mult = intval($_POST['mult'] ?? 1);
+
+$total = $punts * $mult;
+
+switch ($punts) {
+    case 1: $img = "wwwCarlesAR/images/pata1.png"; break;
+    case 2: $img = "wwwCarlesAR/images/pata2.png"; break;
+    case 3: $img = "wwwCarlesAR/images/pata3.png"; break;
+    case 4: $img = "wwwCarlesAR/images/pata4.png"; break;
+    case 5: $img = "wwwCarlesAR/images/pata5.png"; break;
+    default: $img = "wwwCarlesAR/images/pata0.png"; break;
+}
+
+echo "<p><strong>Puntuació:</strong> $punts</p>";
+echo "<p><strong>Multiplicador:</strong> $mult</p>";
+echo "<p><strong>Total d'imatges:</strong> $total</p>";
+
+echo "<div>";
+
+for ($i=0; $i < $total; $i++) {
+    echo "<img src='$img' class='pata-img'>";
+}
+
+echo "</div>";
+?>
     <section class="result">
       <h2>Resultat contacte</h2>
 
