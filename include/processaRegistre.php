@@ -116,22 +116,22 @@ if (!has_text_value('email')) $errors[] = "El camp 'Email' és obligatori o buit
 
         switch ($animal) {
           case "gorilla":
-            $img = "../images/gorilla.png";
+            $img = "wwwCarlesAR/images/gorilla.jpg";
             $nomAnimal = "Goril·la";
             break;
 
           case "tortuga":
-            $img = "../images/tortuga.png";
+            $img = "wwwCarlesAR/images/tortuga.jpg";
             $nomAnimal = "Tortuga";
             break;
 
           case "tigre":
-            $img = "../images/tigre.png";
+            $img = "wwwCarlesAR/images/tigre.jpg";
             $nomAnimal = "Tigre";
             break;
 
           default:
-            $img = "../images/desconegut.png";
+            $img = "wwwCarlesAR/images/desconegut.png";
             $nomAnimal = "Desconegut";
         }
 
