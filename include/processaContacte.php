@@ -93,16 +93,35 @@ echo "</div>";
       <?php endif; ?>
 
       <div class="data">
-        <?php
-        print_field_contact('Email', $email !== "" ? $email : '', has_text_value('email'));
-        print_field_contact('Assumpte', $assumpte !== "" ? $assumpte : '', has_text_value('assumpte'));
-        if (has_text_value('missatge')) {
-            echo '<div><strong>Missatge:</strong></div>';
-            echo '<div class="msg">' . nl2br($missatge) . '</div>';
-        } else {
-            echo '<p><strong>Missatge:</strong> <span class="valor-buit">Valor buit</span></p>';
+<?php
+if (has_text_value('missatge')) {
+    echo '<h3>Missatge processat:</h3>';
+
+    $paraules = explode(" ", $missatge);
+
+    echo '<ul class="msg-list">';
+
+    foreach ($paraules as $p) {
+        $classe = "paraula";
+
+        $pLower = mb_strtolower($p);
+
+        if (strlen($p) >= 10) {
+            $classe .= " llarg";
         }
-        ?>
+
+        if ($pLower === "animal" || $pLower === "apadrinar") {
+            $classe .= " especial";
+        }
+
+        echo "<li><span class='$classe'>$p</span></li>";
+    }
+
+    echo '</ul>';
+} else {
+    echo '<p><strong>Missatge:</strong> <span class="valor-buit">Valor buit</span></p>';
+}
+?>
       </div>
 
       <p><a href="../index.php?apartat=inici">Tornar a l'inici</a></p>

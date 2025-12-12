@@ -34,3 +34,31 @@
   width: 40px;
   margin: 3px;
 }
+
+.msg-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.msg-list li {
+  display: inline-block;
+  margin: 5px;
+}
+
+.paraula {
+  background: #eef;
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid #aac;
+}
+
+.paraula.especial {
+  background: #ffdd88;
+  border-color: #cc9900;
+  font-weight: bold;
+}
+
+.paraula.llarg {
+  background: #000;
+  color: #fff;
+}
