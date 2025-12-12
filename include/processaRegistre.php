@@ -110,7 +110,39 @@ if (!has_text_value('email')) $errors[] = "El camp 'Email' és obligatori o buit
         } else {
             echo '<p><strong>Web:</strong> <span class="valor-buit">Sense web</span></p>';
         }
-        ?>
+
+        if (isset($_POST['animal']) && $_POST['animal'] !== "") {
+        $animal = $_POST['animal'];
+
+        switch ($animal) {
+          case "gorilla":
+            $img = "../images/gorilla.png";
+            $nomAnimal = "Goril·la";
+            break;
+
+          case "tortuga":
+            $img = "../images/tortuga.png";
+            $nomAnimal = "Tortuga";
+            break;
+
+          case "tigre":
+            $img = "../images/tigre.png";
+            $nomAnimal = "Tigre";
+            break;
+
+          default:
+            $img = "../images/desconegut.png";
+            $nomAnimal = "Desconegut";
+        }
+
+        echo "<p><strong>Animal apadrinat:</strong> $nomAnimal</p>";
+        echo "<img src='$img' class='animal-img' alt='$nomAnimal'>";
+        
+        } else {
+          echo "<p><strong>Animal apadrinat:</strong> <span class='valor-buit'>Sense valor</span></p>";
+          echo "<img src='../images/desconegut.png' class='animal-img' alt='Sense valor'>";
+        }
+      ?>
       </div>
 
       <p><a href="../index.php?apartat=inici">Tornar a l'inici</a></p>

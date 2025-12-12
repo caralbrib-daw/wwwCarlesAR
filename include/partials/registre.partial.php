@@ -28,6 +28,15 @@
         <input type="submit" name="envia" value="Enviar">
         <input type="reset" value="Netejar">
       </li>
+      <li><label>Animal a apadrinar:
+        <select name="animal">
+          <option value="">-- Tria un animal --</option>
+          <option value="gorilla">Goril·la</option>
+          <option value="tortuga">Tortuga</option>
+          <option value="tigre">Tigre</option>
+        </select>
+      </label>
+      </li>
     </ul>
   </form>
 </section>

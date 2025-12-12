@@ -23,3 +23,9 @@
   background: #f0f8ff;
   color: #004;
 }
+
+.animal-img {
+    width: 150px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
