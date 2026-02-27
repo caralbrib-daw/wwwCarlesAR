@@ -24,10 +24,7 @@
         </label>
       </li>
       <li><label>Web personal: <input type="text" name="web"></label></li>
-      <li class="buttons">
-        <input type="submit" name="envia" value="Enviar">
-        <input type="reset" value="Netejar">
-      </li>
+      
       <li><label>Animal a apadrinar:
         <select name="animal">
           <option value="">-- Tria un animal --</option>
@@ -42,6 +39,10 @@
         <label><input type="radio" name="estil" value="1"> Estil roig</label><br>
         <label><input type="radio" name="estil" value="2"> Estil marró</label><br>
         <label><input type="radio" name="estil" value=""> Estil per defecte</label>
+      </li>
+      <li class="buttons">
+        <input type="submit" name="envia" value="Enviar">
+        <input type="reset" value="Netejar">
       </li>
     </ul>
   </form>
