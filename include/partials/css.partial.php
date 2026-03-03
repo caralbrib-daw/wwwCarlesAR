@@ -1,5 +1,5 @@
 <?php
-// include/partials/css.partial.php
+$estil = $_POST['estil'] ?? $_GET['estil'] ?? ""; 
 ?>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="css-form">
     <label>CSS: </label>
