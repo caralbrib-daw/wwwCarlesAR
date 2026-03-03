@@ -190,10 +190,10 @@ if (!has_text_value('email')) $errors[] = "El camp 'Email' és obligatori o buit
         echo "No has seleccionado ninguna casilla.";
       }
 
-      
-
-      
-
+      include_once __DIR__ . '/funcions.php';
+      if (empty($errors)) {
+        registreAccionsUsuari('REGISTRE', $email, __DIR__ . '/../log/accionsUsuari.log');
+      }
       ?>
       </div>
 

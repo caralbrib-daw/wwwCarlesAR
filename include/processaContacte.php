@@ -123,6 +123,11 @@ if (has_text_value('missatge')) {
     }
     echo "</table>";
 }
+
+include_once __DIR__ . '/funcions.php';
+if (empty($errors)) {
+    registreAccionsUsuari('CONTACTE', $email, __DIR__ . '/../log/accionsUsuari.log');
+}
 ?>
       </div>
 

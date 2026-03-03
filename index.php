@@ -9,6 +9,7 @@ if (!in_array($apartat, $allowed)) {
     $apartat = 'inici';
 }
   $partials_dir = __DIR__ . '/include/partials/';
+
 ?>
 <!doctype html>
 <html lang="ca">
@@ -26,6 +27,9 @@ if (!in_array($apartat, $allowed)) {
   <main>
     <?php
       include $partials_dir . $apartat . '.partial.php';
+      include_once __DIR__ . '/include/funcions.php';
+      $ruta_nav = __DIR__ . '/log/navegacio.log';
+      registreNavegacio($apartat, $ruta_nav); // [cite: 593, 598]
     ?>
   </main>
   <?php
