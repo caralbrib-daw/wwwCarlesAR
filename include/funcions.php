@@ -1,4 +1,54 @@
 <?php
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'projecte_php'); // Asegúrate de que coincida con tu BD
+define('DB_USER', 'root');
+define('DB_PASS', ''); // Tu contraseña de MySQL
+// include/funcions.php (Añadir al final)
+
+function conectaBD() {
+    try {
+        $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4";
+        $pdo = new PDO($dsn, DB_USER, DB_PASS);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $pdo;
+    } catch (PDOException $e) {
+        die("Error de connexió: " . $e->getMessage());
+    }
+}
+
+function usuariExisteix($email) {
+    $pdo = conectaBD();
+    $sql = "SELECT COUNT(*) FROM usuaris WHERE email = :email";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['email' => $email]);
+    return $stmt->fetchColumn() > 0;
+}
+
+function insereixUsuari($nom, $cognoms, $email, $password) {
+    if (usuariExisteix($email)) {
+        return "usuariExisteix";
+    }
+
+    $pdo = conectaBD();
+    // Encriptamos la contraseña por seguridad
+    $passwordHash = password_hash($password, PASSWORD_BCRYPT);
+    
+    $sql = "INSERT INTO usuaris (nom, cognoms, email, password) VALUES (:nom, :cognoms, :email, :password)";
+    $stmt = $pdo->prepare($sql);
+    
+    try {
+        $stmt->execute([
+            'nom' => $nom,
+            'cognoms' => $cognoms,
+            'email' => $email,
+            'password' => $passwordHash
+        ]);
+        return true;
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+
 // include/funcions.php
 declare(strict_types=1);
 
