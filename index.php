@@ -1,4 +1,14 @@
 <?php
+// Al principio de index.php, processaRegistre.php y processaContacte.php
+session_start();
+
+// Lógica para guardar el estilo en la sesión
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['estil'])) {
+    $_SESSION['estil'] = $_POST['estil'];
+}
+
+// Recuperar el estilo de la sesión (si no existe, vacío)
+$estil = $_SESSION['estil'] ?? "";
     $apartat = "inici";
 if (isset($_GET['apartat']) && is_string($_GET['apartat']) && $_GET['apartat'] !== "") {
     $apartat = $_GET['apartat'];

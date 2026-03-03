@@ -1,5 +1,14 @@
 <?php
-$estil = $_POST['estil'] ?? $_GET['estil'] ?? ""; 
+// Al principio de index.php, processaRegistre.php y processaContacte.php
+session_start();
+
+// Lógica para guardar el estilo en la sesión
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['estil'])) {
+    $_SESSION['estil'] = $_POST['estil'];
+}
+
+// Recuperar el estilo de la sesión (si no existe, vacío)
+$estil = $_SESSION['estil'] ?? "";
 ?>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="css-form">
     <label>CSS: </label>

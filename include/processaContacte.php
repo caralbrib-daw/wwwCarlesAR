@@ -1,4 +1,15 @@
 <?php
+// Al principio de index.php, processaRegistre.php y processaContacte.php
+session_start();
+
+// Lógica para guardar el estilo en la sesión
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['estil'])) {
+    $_SESSION['estil'] = $_POST['estil'];
+}
+
+// Recuperar el estilo de la sesión (si no existe, vacío)
+$estil = $_SESSION['estil'] ?? "";
+
 declare(strict_types=1);
 
 function get_post_raw(string $key) {
