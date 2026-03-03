@@ -40,6 +40,14 @@
         <label><input type="radio" name="estil" value="2"> Estil marró</label><br>
         <label><input type="radio" name="estil" value=""> Estil per defecte</label>
       </li>
+      <li><label>Animal en perill del mes:</label><br>
+        <label><input type="checkbox" name="animalextincio[]" value="1">Elefent africà de bosc</label><br>
+        <label><input type="checkbox" name="animalextincio[]" value="2">Lleopard d'Amur</label><br>
+        <label><input type="checkbox" name="animalextincio[]" value="3">Marsopa de Califòrnia</label><br>
+        <label><input type="checkbox" name="animalextincio[]" value="4">Mussol de Blewitt</label><br>
+        <label><input type="checkbox" name="animalextincio[]" value="5">Pangolí Malai</label><br>
+        <label><input type="checkbox" name="animalextincio[]" value="6">Saolà</label><br>
+      </li>
       <li class="buttons">
         <input type="submit" name="envia" value="Enviar">
         <input type="reset" value="Netejar">

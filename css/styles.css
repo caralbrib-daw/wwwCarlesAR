@@ -117,3 +117,14 @@ footer {
     border-radius:4px; 
     background:#fff; 
 }
+
+/* Colores para la tabla de contacto */
+.fons01 { background-color: orange; }
+.fons02 { background-color: deeppink; }
+.fons03 { background-color: lightgreen; }
+.fons04 { background-color: skyblue; }
+.fons05 { background-color: gold; }
+
+.taula-missatge { border-collapse: collapse; margin-top: 10px; }
+.taula-missatge td { border: 1px solid #000; padding: 10px; text-align: center; }
+.data-actual { font-style: italic; color: #0a7; }

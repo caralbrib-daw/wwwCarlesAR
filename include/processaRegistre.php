@@ -49,22 +49,23 @@ if (!has_text_value('email')) $errors[] = "El camp 'Email' és obligatori o buit
 <head>
   <meta charset="utf-8" />
   <title>Registre - Resultat</title>
-  <link rel="stylesheet" href="wwwCarlesAR/css/styles.css" />
-  <link rel="stylesheet" href="wwwCarlesAR/css/process.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/process.css" />
 
   <?php
   $estil = $_POST['estil'] ?? "";
 
   if ($estil === "1") {
-      echo '<link rel="stylesheet" href="wwwCarlesAR/css/estilsregistre1.css">';
+      echo '<link rel="stylesheet" href="../css/estilsregistre1.css">';
   } else if ($estil === "2") {
-      echo '<link rel="stylesheet" href="wwwCarlesAR/css/estilsregistre2.css">';
+      echo '<link rel="stylesheet" href="../css/estilsregistre2.css">';
   }
   ?>
 </head>
 <body>
   <?php include __DIR__ . '/partials/cap.partial.php'; ?>
   <?php include __DIR__ . '/partials/menu.partial.php'; ?>
+  <?php include __DIR__ . '/dadesAnimals.php'; ?>
 
   <main>
     <section class="result">
@@ -121,37 +122,78 @@ if (!has_text_value('email')) $errors[] = "El camp 'Email' és obligatori o buit
             echo '<p><strong>Web:</strong> <span class="valor-buit">Sense web</span></p>';
         }
 
-        if (isset($_POST['animal']) && $_POST['animal'] !== "") {
-        $animal = $_POST['animal'];
+        include __DIR__ . '/partials/data.partial.php';
 
-        switch ($animal) {
-          case "gorilla":
-            $img = "wwwCarlesAR/images/gorilla.jpg";
-            $nomAnimal = "Goril·la";
-            break;
-
-          case "tortuga":
-            $img = "wwwCarlesAR/images/tortuga.jpg";
-            $nomAnimal = "Tortuga";
-            break;
-
-          case "tigre":
-            $img = "wwwCarlesAR/images/tigre.jpg";
-            $nomAnimal = "Tigre";
-            break;
-
-          default:
-            $img = "wwwCarlesAR/images/desconegut.png";
-            $nomAnimal = "Desconegut";
-        }
-
-        echo "<p><strong>Animal apadrinat:</strong> $nomAnimal</p>";
-        echo "<img src='$img' class='animal-img' alt='$nomAnimal'>";
-        
-        } else {
+        if (isset($_POST['animal']) && isset($dadesAnimals[$_POST['animal']])) {
+    $clau = $_POST['animal'];
+    $info = $dadesAnimals[$clau];
+    
+    echo "<h3>Dades de l'animal: " . ucfirst($clau) . "</h3>";
+    echo "<table border='1' class='tabla-animal'>";
+    foreach ($info as $titol => $valor) {
+        echo "<tr><th>$titol</th><td>$valor</td></tr>";
+    }
+    echo "</table>";
+} else {
           echo "<p><strong>Animal apadrinat:</strong> <span class='valor-buit'>Sense valor</span></p>";
-          echo "<img src='wwwCarlesAR/images/desconegut.png' class='animal-img' alt='Sense valor'>";
+          echo "<img src='../desconegut.png' class='animal-img' alt='Sense valor'></br>";
         }
+
+        echo "<br><h2>Animal en Perill del Mes</h2>";
+
+        if (isset($_POST['animalextincio']) && is_array($_POST['animalextincio'])) {
+          $animalenextencion = $_POST['animalextincio'];
+
+          $elegidos=$_POST['animalextincio'];
+          
+          $opciones = [
+            '1' => 'Elefent africà de bosc',
+            '2' => 'Lleopard dAmur',
+            '3' => 'Marsopa de Califòrnia',
+            '4' => 'Mussol de Blewitt',
+            '5' => 'Pangolí Malai',
+            '6' => 'Saolà',
+          ];
+          
+          $fotos = [
+            '1' => 'elefantafricadebosc.jpeg',
+            '2' => 'loepardodeamur.jpg',
+            '3' => 'mariposacaliforniana.jpeg',
+            '4' => 'buhoblewitt.jpg',
+            '5' => 'pangolinmalayo.jpeg',
+            '6' => 'saola.jpg',
+          ];
+
+          $nombres = [];
+
+          
+    // Convertimos los números a palabras usando el mapa
+      foreach ($elegidos as $valor) {
+        if (isset($opciones[$valor])) {
+            echo "<img src='../images/perill/{$fotos[$valor]}' class='animal-img'> ";
+            $nombres[] = $opciones[$valor];
+        }
+      }
+
+      echo "<br>";
+
+    // Unimos los nombres en un string bonito
+      if (count($nombres) > 0) {
+        $mensaje = implode(', ', $nombres);
+        // Reemplazamos la última coma por una "y" para que suene natural
+        $mensaje = preg_replace('/, ([^,]+)$/', ' y $1', $mensaje);
+        
+        echo "Has elegido al " . $mensaje;
+      }
+      } else {
+        echo "<img src='../images/desconegut.png' class='animal-img'><br>";
+        echo "No has seleccionado ninguna casilla.";
+      }
+
+      
+
+      
+
       ?>
       </div>
 

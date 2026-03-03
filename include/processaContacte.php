@@ -94,32 +94,34 @@ echo "</div>";
 
       <div class="data">
 <?php
+// include/processaContacte.php - Lógica de la tabla
 if (has_text_value('missatge')) {
-    echo '<h3>Missatge processat:</h3>';
-
     $paraules = explode(" ", $missatge);
-
-    echo '<ul class="msg-list">';
-
-    foreach ($paraules as $p) {
-        $classe = "paraula";
-
-        $pLower = mb_strtolower($p);
-
-        if (strlen($p) >= 10) {
-            $classe .= " llarg";
-        }
-
-        if ($pLower === "animal" || $pLower === "apadrinar") {
-            $classe .= " especial";
-        }
-
-        echo "<li><span class='$classe'>$p</span></li>";
+    $total = count($paraules);
+    
+    if ($total <= 36) {
+        $cols = ceil(sqrt($total)); // Matriz cuadrada [cite: 261]
+        $files = $cols;
+    } else {
+        $cols = 6; // Máximo 6 columnas [cite: 255]
+        $files = ceil($total / 6);
     }
 
-    echo '</ul>';
-} else {
-    echo '<p><strong>Missatge:</strong> <span class="valor-buit">Valor buit</span></p>';
+    echo "<h3>Matriu de paraules ($total paraules):</h3>";
+    echo "<table class='taula-missatge'>";
+    $index = 0;
+    for ($f = 0; $f < $files; $f++) {
+        echo "<tr>";
+        for ($c = 0; $c < $cols; $c++) {
+            $claseFons = "fons0" . random_int(1, 5); // Clase aleatoria [cite: 260]
+            echo "<td class='$claseFons'>";
+            echo isset($paraules[$index]) ? htmlspecialchars($paraules[$index]) : "";
+            echo "</td>";
+            $index++;
+        }
+        echo "</tr>";
+    }
+    echo "</table>";
 }
 ?>
       </div>
