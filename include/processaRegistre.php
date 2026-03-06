@@ -224,13 +224,33 @@ if (!has_text_value('email')) $errors[] = "El camp 'Email' és obligatori o buit
       if (empty($errors)) {
         registreAccionsUsuari('REGISTRE', $email, __DIR__ . '/../log/accionsUsuari.log');
       }
+
+// include/processaRegistre.php
+include_once 'config.php';
+include_once 'funcions.php';
+
+// ... (después de validar los errores básicos de campos vacíos)
+
+if (empty($errors)) {
+    $resultat = insereixUsuari($nom, $cognoms, $email, $password_raw);
+
+    if ($resultat === "usuariExisteix") {
+        $errors[] = "Error: L'usuari $email ja existeix en la base de dades.";
+    } elseif ($resultat === true) {
+        // Registro éxito
+        registreAccionsUsuari('REGISTRE', $email, __DIR__ . '/../log/accionsUsuari.log');
+        echo "<p class='success'>Usuari registrat correctament.</p>";
+    } else {
+        $errors[] = "Error crític en registrar l'usuari.";
+    }
+}
       ?>
       </div>
 
       <p><a href="../index.php?apartat=inici">Tornar a l'inici</a></p>
+      
     </section>
   </main>
-
   <?php include __DIR__ . '/partials/peu.partial.php'; ?>
 </body>
 </html>
