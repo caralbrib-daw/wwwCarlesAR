@@ -25,28 +25,19 @@ function usuariExisteix($email) {
 }
 
 function insereixUsuari($nom, $cognoms, $email, $password) {
-    if (usuariExisteix($email)) {
-        return "usuariExisteix";
-    }
-
     $pdo = conectaBD();
-    // Encriptamos la contraseña por seguridad
-    $passwordHash = password_hash($password, PASSWORD_BCRYPT);
+    // Usamos PASSWORD_DEFAULT que es el estándar actual recomendado
+    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
     
-    $sql = "INSERT INTO usuaris (nom, cognoms, email, password) VALUES (:nom, :cognoms, :email, :password)";
+    $sql = "INSERT INTO usuaris (nom, cognoms, email, password, role) 
+            VALUES (:nom, :cognoms, :email, :password, 'user')";
     $stmt = $pdo->prepare($sql);
-    
-    try {
-        $stmt->execute([
-            'nom' => $nom,
-            'cognoms' => $cognoms,
-            'email' => $email,
-            'password' => $passwordHash
-        ]);
-        return true;
-    } catch (PDOException $e) {
-        return false;
-    }
+    return $stmt->execute([
+        'nom' => $nom,
+        'cognoms' => $cognoms,
+        'email' => $email,
+        'password' => $passwordHash
+    ]);
 }
 
 // include/funcions.php
@@ -89,3 +80,4 @@ function registreAccionsUsuari(string $accio, string $usuari, string $ruta_log):
 
     file_put_contents($ruta_log, $linia, FILE_APPEND);
 }
+
