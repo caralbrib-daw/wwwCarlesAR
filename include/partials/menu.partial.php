@@ -4,5 +4,6 @@
     <li><a href="index.php?apartat=registre">Registre</a></li>
     <li><a href="index.php?apartat=contacte">Contacte</a></li>
     <li><a href="index.php?apartat=apadrina">Apadrina</a></li>
+    <li><a href="login.partial.php">Login</a></li>
   </ul>
 </nav>
