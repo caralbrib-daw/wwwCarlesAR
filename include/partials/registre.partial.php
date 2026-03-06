@@ -5,7 +5,8 @@
       <li><label>Nom: <input type="text" name="nom" required></label></li>
       <li><label>Cognoms: <input type="text" name="cognoms"></label></li>
       <li><label>Email: <input type="email" name="email" required></label></li>
-      <li><label>Password: <input type="password" name="password"></label></li>
+      <li><label>Password: <input type="password" name="password" required></label></li>
+      <li><label>Confirma Password: <input type="password" name="password_confirm" required></label></li>
       <li>
         <label>Gènere:
           <label><input type="radio" name="genere" value="home"> Home</label>

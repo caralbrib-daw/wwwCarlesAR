@@ -154,6 +154,8 @@ if (!has_text_value('email')) $errors[] = "El camp 'Email' és obligatori o buit
 
         include __DIR__ . '/partials/data.partial.php';
 
+        
+
         if (isset($_POST['animal']) && isset($dadesAnimals[$_POST['animal']])) {
     $clau = $_POST['animal'];
     $info = $dadesAnimals[$clau];
@@ -243,6 +245,15 @@ if (empty($errors)) {
     } else {
         $errors[] = "Error crític en registrar l'usuari.";
     }
+}
+
+$password = $_POST['password'] ?? "";
+$password_confirm = $_POST['password_confirm'] ?? "";
+
+if ($password !== $password_confirm) {
+    // Si no coinciden, redirigimos con un error
+    header("Location: ../index.php?apartat=registre&error=password");
+    exit;
 }
       ?>
       </div>
