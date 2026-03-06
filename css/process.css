@@ -62,3 +62,10 @@
   background: #000;
   color: #fff;
 }
+
+.tabla-admin { width: 100%; border-collapse: collapse; margin-top: 20px; }
+.tabla-admin th, .tabla-admin td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+.tabla-admin tr:nth-child(even) { background-color: #f9f9f9; }
+.btn-delete { color: white; background: #d9534f; padding: 5px 10px; text-decoration: none; border-radius: 3px; font-size: 0.8em; }
+.btn-delete:hover { background: #c9302c; }
+.alerta { padding: 10px; background: #dff0d8; color: #3c763d; margin-bottom: 15px; border-radius: 4px; }
