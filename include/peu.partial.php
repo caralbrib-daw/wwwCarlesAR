@@ -1,7 +1,3 @@
 <footer>
-    <p>IES Lluis Simarro</p>
-    <p>1r DAW Tard</p>
-    <p>Entorns de Desenvolupament</p>
-    <p>Curs 25/26</p>
-    <p>&copy; Carles A. R.</p>
+    <p>IES Lluis Simarro<br>1r DAW Tard<br>Entorns de Desenvolupament<br>Curs 25/26<br>&copy; Carles A. R.</p>
 </footer>

@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+    color: lightcoral;
+    background-color: rgb(76, 14, 14);
+    text-align: center;
+}
+
+header, nav, footer {
+    border: 5px solid red;
+    padding: 2.5%;
+    margin: 1.8%;
+    background-color: black;
+    border-radius: 7.2%;
+}
+
+main {
+    border: 5px solid red;
+    padding: 40px; /* Más espacio dentro para que los <p> no toquen el borde */
+    background-color: black;
+    border-radius: 20px;
+}
+
+p {
+    border: 5px solid red;
+    padding: 10px 20px; /* Padding más controlado */
+    margin: 15px auto;  /* Margen arriba/abajo para separar, auto para centrar */
+    background-color: #160000; /* Un gris muy oscuro para que se note el borde sobre el fondo negro */
+    border-radius: 15px; /* Un radio más estándar, el 7.2% a veces deforma */
+    display: block;      /* Asegura que cada uno empiece en línea nueva */
+    width: fit-content;  /* ¡CLAVE! La caja solo mide lo que mide el texto */
+    min-width: 200px;    /* Para que no queden cajas demasiado pequeñas */
+}
