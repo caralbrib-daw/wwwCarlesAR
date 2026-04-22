@@ -30,3 +30,31 @@ p {
     width: fit-content;  /* ¡CLAVE! La caja solo mide lo que mide el texto */
     min-width: 200px;    /* Para que no queden cajas demasiado pequeñas */
 }
+
+.fons01 { background-color: orange; }
+.fons02 { background-color: deeppink; }
+.fons03 { background-color: lawngreen; }
+.fons04 { background-color: darkblue; color: white; } /* Texto blanco para fondos oscuros */
+.fons05 { background-color: slategray; color: white; }
+.fons_llarga { background-color: black; color: white; }
+.fons_destacada { background-color: green; color: white; }
+
+/* Estilo para que la tabla se vea centrada y bonita */
+.taula-missatge {
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+.taula-missatge td {
+    border: 1px solid red;
+    width: 100px;
+    height: 60px;
+    text-align: center;
+    padding: 5px;
+}
+.caixa-paraula {
+    background-color: white;
+    display: inline-block;
+    padding: 2px 5px;
+    color: orange;
+    font-weight: bold;
+}

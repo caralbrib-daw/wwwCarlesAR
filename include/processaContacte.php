@@ -42,49 +42,63 @@
     <p><strong>Email:</strong> <?php echo $email; ?></p>
     <p><strong>Assumpte:</strong> <?php echo $assumpte; ?></p>
     
-    <p><strong>Missatge processat:</strong>
-    <ul style="list-style-type: none; padding: 20px; margin: 0; text-align: center;">
-    <?php 
+    <p><strong>Missatge processat:</strong></p>
+
+<?php 
     $paraules = explode(" ", trim($missatge));
+    $num_paraules = count($paraules);
 
-    foreach ($paraules as $p) {
-        if ($p == "") continue;
-
-        // 1. Valores por defecto (Cajita naranja)
-        $fondo = "#000000";
-        $color = "#ffffff";
-        $borde = "#ff0000";
-
-        $p_minuscula = mb_strtolower($p);
-        $p_limpia = rtrim($p_minuscula, ".,;:?!");
-
-        // 2. Lógica de colores según tus reglas
-        if ($p_limpia == "animal" || $p_limpia == "apadrinar") {
-            $fondo = "#2e7d32"; // Verde
-            $color = "#ffffff"; // Blanco
-            $borde = "#1b5e20";
-        } elseif (mb_strlen($p) >= 10) {
-            $fondo = "#000000"; // Negro
-            $color = "#ffffff"; // Blanco
-            $borde = "#333333";
-        }
-
-        // 3. Imprimimos con STYLE INLINE para forzar el diseño
-        echo "<li style='display: inline-block; 
-                         margin: 5px; 
-                         padding: 5px 10px; 
-                         border: 1px solid $borde; 
-                         background-color: $fondo; 
-                         color: $color; 
-                         border-radius: 3px; 
-                         font-weight: bold;'>$p</li>";
+    // --- LÓGICA DE DIMENSIONES ---
+    if ($num_paraules <= 36) {
+        // Tabla cuadrada: la raíz cuadrada redondeada hacia arriba
+        // Ej: 7 palabras -> sqrt(7) = 2.6 -> ceil = 3. Tabla 3x3
+        $columnes = ceil(sqrt($num_paraules));
+        $files = $columnes;
+    } else {
+        // Más de 36 palabras: 6 columnas fijas
+        $columnes = 6;
+        $files = ceil($num_paraules / $columnes);
     }
-    ?>
-    </ul>
-    </p>
-    </main>
-    <?php
-        include 'peu.partial.php';
-    ?>
+
+    // --- DIBUJAR LA TABLA ---
+    echo "<table class='taula-missatge'>";
+    
+    $index_paraula = 0; // Para saber qué palabra toca imprimir
+
+    for ($f = 0; $f < $files; $f++) {
+        echo "<tr>";
+        for ($c = 0; $c < $columnes; $c++) {
+            
+            // 1. Elegimos una clase de fondo aleatoria (del 1 al 5)
+            $num_aleatori = random_int(1, 5);
+            $classe_aleatoria = "fons0" . $num_aleatori;
+
+            // 2. Comprobamos si hay palabra o si la celda queda vacía
+            if ($index_paraula < $num_paraules) {
+                $p = $paraules[$index_paraula];
+                $p_neta = rtrim(mb_strtolower($p), ".,;:?!");
+                
+                // Aplicamos las reglas especiales de color (animal, llarga, etc.)
+                if ($p_neta == "animal" || $p_neta == "apadrinar") {
+                    $classe_aleatoria = "fons_destacada";
+                } elseif (mb_strlen($p) >= 10) {
+                    $classe_aleatoria = "fons_llarga";
+                }
+
+                // Imprimimos la celda con la palabra dentro de un span blanco
+                echo "<td class='$classe_aleatoria'>";
+                echo "<span class='caixa-paraula'>$p</span>";
+                echo "</td>";
+                
+                $index_paraula++;
+            } else {
+                // Celda vacía (si ya no quedan palabras)
+                echo "<td class='$classe_aleatoria'></td>";
+            }
+        }
+        echo "</tr>";
+    }
+    echo "</table>";
+?>
 </body>
 </html>
