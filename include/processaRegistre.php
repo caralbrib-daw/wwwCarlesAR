@@ -62,8 +62,18 @@
                 'orangutan' => '../images/orangutan.png'
             ];
 
+            include 'dadesAnimals.php';
+
             $multiplicador = isset($_POST['multiplicador']) ? (int)$_POST['multiplicador'] : 1;
             $total_imatges = $puntuacio * $multiplicador;
+
+            if (isset($_POST["animalenperill"])) {
+                $animalenperill=$_POST["animalenperill"];
+            } else {
+                $animalenperill = [];
+            }
+
+            $quantitatNoms = count($animalenperill);
         }
     }
 ?>
@@ -82,16 +92,66 @@
         <p><strong>Contrasenya:</strong> <?php echo $contrasenya; ?></p>
         <p><strong>Telefon:</strong> <?php echo $telefon; ?></p>
         
-        <p><strong>Animal a Apadrinar:</strong> <?php echo ($apadrina == "") ? $msg_buit : $apadrina; ?><br>
+        <p><strong>Animal a Apadrinar:</strong> <?php echo ($apadrina == "") ? $msg_buit : $apadrina; ?><br><br>
         <img src="<?php echo isset($imagenelegida[$apadrina]) ? $imagenelegida[$apadrina] : $imagenelegida['']; ?>" 
              alt="Imatge animal" width="150">_
         </p>
+        <?php 
+            if ($apadrina != "" && isset($dadesAnimals[$apadrina])): 
+                $infoAnimal = $dadesAnimals[$apadrina];
+        ?>
+        <section style="margin-top: 30px; border: 2px solid red; border-radius: 10px; overflow: hidden; font-family: sans-serif;">
+            <header style="background-color: black; color: white; padding: 10px;">
+                <h3 style="margin: 0;">Fitxa Tècnica: <?php echo ucfirst($apadrina); ?></h3>
+            </header>
+        
+            <div style="padding: 15px; background-color: black;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <td style="padding: 8px; font-weight: bold; border-bottom: 1px solid #ddd; width: 30%;">Nom Científic:</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd; font-style: italic;"><?php echo $infoAnimal['nom_cientific']; ?></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; font-weight: bold; border-bottom: 1px solid #ddd;">Estat de conservació:</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd; color: #d32f2f;"><?php echo $infoAnimal['estat']; ?></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; font-weight: bold; border-bottom: 1px solid #ddd;">Hàbitat:</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd;"><?php echo $infoAnimal['habitat']; ?></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; font-weight: bold; border-bottom: 1px solid #ddd;">Alimentació:</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #ddd;"><?php echo $infoAnimal['alimentacio']; ?></td>
+                    </tr>
+                </table>
+            
+                <div style="margin-top: 15px; padding: 10px; background: black; border-left: 4px solid black;">
+                    <strong>Descripció:</strong>
+                    <p style="margin: 5px 0 0 0; line-height: 1.5; color: #ffffff;"><?php echo $infoAnimal['descripcio']; ?></p>
+                </div>
+            </div>
+        </section>
+
+    <?php elseif ($apadrina != ""): ?>
+        <p style="color: orange;">No s'ha trobat informació detallada per a aquest animal.</p>
+    <?php endif; ?>
         
         <p><strong>Continent:</strong> <?php echo $continent; ?></p>
         <p><strong>Puntuació:</strong> <?php echo $puntuacio." * ".$multiplicador; ?><br><br>
         <?php for ($i = 0; $i < (int)$total_imatges; $i++): ?> 
             <img src='../images/pata.png' alt='Pata' width='30' style='margin-right: 5px;'>
         <?php endfor; ?>
+        <p><strong>Animals del mes:</strong><br><br>
+            <?php 
+                if (!empty($animalenperill)) {
+                    foreach($animalenperill as $nom){
+                        echo "<img src='../images/".$nom.".png' alt='".$nom."' width='150'><br><br>";
+                    }
+                } else {
+                    echo "<img src='../images/desconocido.png' alt='desconocido' width='150'>";
+                }
+            ?>
+        </p>
         </p> 
     </main>
     <?php include 'peu.partial.php'; ?>

@@ -54,6 +54,13 @@
     <label for="puntuacion">Puntua la página (1-5)</label>
     <input type="number" id="puntuacion" name="puntuacion" min="1" max="5" value="1" required>
     <input type="range" id="multiplicador" name="multiplicador" min="1" max="100" value="1"><br><br>
+    <label for="animalenperill">Animal en perill del mes:</label><br><br>
+        <input type="checkbox" name="animalenperill[]" value="elefant_africa_de_bosc">Elefant africa de bosc<br>
+        <input type="checkbox" name="animalenperill[]" value="lleopard_d_amur">Lleopard d'Amur<br>
+        <input type="checkbox" name="animalenperill[]" value="marsopa_de_california">Marsopa de California<br>
+        <input type="checkbox" name="animalenperill[]" value="mussol_de_blewitt">Mussol de Blewitt<br>
+        <input type="checkbox" name="animalenperill[]" value="pangoli_malai">Pangoli Malai<br>
+        <input type="checkbox" name="animalenperill[]" value="saola">Saola<br><br>
     <input type="submit" name="envia" id="envia" value="Envia">
     <input type="reset" value="Reset">
 </form>

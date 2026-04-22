@@ -12,7 +12,8 @@
 <body>
     <?php 
         include $include . 'cap.partial.php';
-        $path = ""; 
+        $path = "";
+        include $include . 'partials/data.partial.php';
         include $include . 'menu.partial.php';
         include $include . 'principal.partial.php';
 
